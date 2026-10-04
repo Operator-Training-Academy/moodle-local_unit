@@ -1,6 +1,6 @@
 # Unit Profile Sync
 
-Release candidate: `1.0.0-rc.1`
+Release candidate: `1.0.0-rc.2`
 
 Moodle local plugin component: `local_unit`
 
@@ -62,7 +62,7 @@ Recommended update workflow for future CSV releases:
 Pushing a version tag creates a GitHub Release and attaches a Moodle-installable ZIP file:
 
 ```sh
-git tag v1.0.0-rc.1
+git tag v1.0.0-rc.2
 git push origin main --tags
 ```
 

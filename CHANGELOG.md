@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.0-rc.2
 
 - Sync `department` from the final name in `NAMEPATH` and `institution` from the preceding name, rather than using `DRRSANAME`.
 
