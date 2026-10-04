@@ -10,8 +10,8 @@ The lookup table keeps these CSV fields for later features: `UIC`, `PARENTUIC`, 
 
 For a user with `unit_uic` set:
 
-- `department` is set to that UIC row's `DRRSANAME`.
-- `institution` is set to the parent UIC row's `DRRSANAME`, using `PARENTUIC` to find the parent row.
+- `department` is set to the final name in that UIC row's `NAMEPATH`.
+- `institution` is set to the name immediately before it in `NAMEPATH`, which is the parent UIC's name.
 - `unit_uic` is normalized to trimmed uppercase by the scheduled task and during per-user syncs.
 - If `unit_uic` is empty or does not match an imported UIC, `unit_uic`, `department`, and `institution` are cleared.
 

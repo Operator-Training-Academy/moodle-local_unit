@@ -38,15 +38,9 @@ class profile_sync {
             return self::clear_synced_profile_data($userid, $user);
         }
 
-        $department = (string) $unit->drrsaname;
-        $institution = '';
-
-        if (!empty($unit->parentuic)) {
-            $parent = importer::find_by_uic($unit->parentuic);
-            if ($parent) {
-                $institution = (string) $parent->drrsaname;
-            }
-        }
+        $names = self::namepath_segments((string) $unit->namepath);
+        $department = (string) array_pop($names);
+        $institution = (string) array_pop($names);
 
         if ($user->department === $department && $user->institution === $institution) {
             return false;
@@ -180,6 +174,20 @@ class profile_sync {
         $value = $DB->get_field_sql($sql, ['userid' => $userid, 'shortname' => $shortname]);
 
         return importer::normalise_uic($value ?: '');
+    }
+
+    /**
+     * Split a NAMEPATH into its ordered organization names.
+     *
+     * @param string $namepath Imported NAMEPATH value.
+     * @return string[]
+     */
+    private static function namepath_segments(string $namepath): array {
+        $names = array_map('trim', explode('>', $namepath));
+
+        return array_values(array_filter($names, static function(string $name): bool {
+            return $name !== '';
+        }));
     }
 
     /**

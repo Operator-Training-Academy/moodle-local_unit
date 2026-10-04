@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Sync `department` from the final name in `NAMEPATH` and `institution` from the preceding name, rather than using `DRRSANAME`.
+
 ## 1.0.0-rc.1
 
 - Imports bundled WDARFF and ARNG organization CSV files into `local_unit_orgs`.
